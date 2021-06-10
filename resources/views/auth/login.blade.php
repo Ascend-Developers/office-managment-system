@@ -59,7 +59,7 @@
                                     <img src="/app-assets/images/logo/MOH-Logo.png"  alt="MOH-Inventory" width="50%">
                                 </a>
 
-                                <h4 class="card-title mb-1">Welcome to MOH Inventory System! 👋</h4>
+                                <h4 class="card-title mb-1">Welcome to OMS! 👋</h4>
                                 <p class="card-text mb-2">Please sign-in to your account and start the adventure</p>
 
                                 <form class="auth-login-form mt-2" method="POST" action="{{ route('login') }}">

@@ -11,6 +11,7 @@
                 
                     <h5><strong>Name : </strong>{{$user->name}}</h5>
                     <h5><strong>Email : </strong>{{$user->email}}</h5>
+                    <h5><strong>Phone : </strong>{{$user->phone}}</h5>
                 </div>
             </div>
         </div>

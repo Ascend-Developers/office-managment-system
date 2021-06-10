@@ -5,15 +5,16 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Users') }}</div>
+                <div class="card-header">{{ __('Laptop Inventory') }}</div>
 
                 <div class="card-body table-responsive w-100">
-                    <table class="table responsive " id="user-table">
+                    <table class="table responsive " id="invt-table">
                         <thead>
                             <tr>
-                                <th scope="col">Name</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Phone</th>
+                                <th scope="col">Product Name</th>
+                                <th scope="col">Serial No</th>
+                                <th scope="col">Location</th>
+                                <th scope="col">User</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -45,7 +46,7 @@
                 swal({
                         position: 'top-end',
                         title: "Are you sure?",
-                        text: "Once deleted, you will not be able to recover User!",
+                        text: "Once deleted, you will not be able to recover Inventory!",
                         icon: "warning",
                         buttons: true,
                         dangerMode: true,
@@ -55,8 +56,8 @@
                         e.currentTarget.submit();
                         swal({
                             position: 'top-end',
-                            title: "User",
-                            text: "User is deleted successfully",
+                            title: "Inventory",
+                            text: "Inventory is deleted successfully",
                             icon: "success",
                         });
                     }else{
@@ -66,15 +67,16 @@
             });
 
             $(function() {
-                $('#user-table').DataTable({
+                $('#invt-table').DataTable({
                     processing: true,
                     serverSide: true,
                     responsive: true,
-                    ajax: '{!! route('user.datatable') !!}',
+                    ajax: '{!! route('inventory.datatable') !!}',
                     columns: [
-                        { data: 'name', name: 'Name' },
-                        { data: 'email', name: 'Email' },
-                        { data: 'phone', name: 'Phone' },
+                        { data: 'productName', name: 'Product Name' },
+                        { data: 'serialNo', name: 'Serial No' },
+                        { data: 'location', name: 'Location' },
+                        { data: 'user', name: 'User' },
                         { data: 'action', name: 'Action' },
                     ]
                 });

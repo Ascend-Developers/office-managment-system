@@ -49,7 +49,8 @@ class UserController extends Controller
         $data = [
             'name' => $request->name,
             'email' => $request->email,
-            'password' =>  Hash::make($request->input('password'))
+            'password' => Hash::make($request->input('password')),
+            'phone' => $request->phone
         ];
 
         $user = User::create($data);
@@ -90,14 +91,19 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update($id)
+    public function update(Request $request,$id)
     {
         //
         $user = User::find($id);
 
         $user->name = $request->input('name');
         $user->email = $request->input('email');
+        $user->phone = $request->input('password');
         $user->password = Hash::make($request->input('password'));
+
+        $user->save();
+        
+        return redirect()->route('user.index')->with('success','User is Updated successfully');
     }
 
     /**
@@ -129,6 +135,9 @@ class UserController extends Controller
         ->addColumn('email', function($u) {
             return $u->email;
         })
+        ->addColumn('phone', function($u) {
+            return $u->phone;
+        })
         ->addColumn('action', function ($u) {
                 $route = route('user.edit', $u);
                 $routeShow = route('user.show', $u);
@@ -140,7 +149,6 @@ class UserController extends Controller
                 </form> |
                 <a href="'.$routeShow.'" class="text-primary">show</a>';
         })
-
         ->whitelist(['name','email'])
         // ->rawColumns([])
         ->toJson();
