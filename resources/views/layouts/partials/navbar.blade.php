@@ -11,6 +11,9 @@
             </ul>
           
         </div>
+        <ul class="nav navbar-nav align-items-center">
+            <h6>{{date_format(date_create(), 'd-m-y H:i:s')}}</h6>
+        </ul>
         <ul class="nav navbar-nav align-items-center ml-auto">
             <li class="nav-item dropdown dropdown-user"><a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="javascript:void(0);" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="user-nav d-sm-flex d-none"><span class="user-name font-weight-bolder">{{ Auth::user()->name }}</span><span class="user-status">{{ Auth::user()->type }}</span></div><span class="avatar"><img class="round font-medium-5" data-feather="user" alt="" width="200%"><span class="avatar-status-online"></span></span>
