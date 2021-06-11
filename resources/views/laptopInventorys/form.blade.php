@@ -19,7 +19,7 @@
 </div>
 
 <div class="form-group">
-    <label for="">Date Of Aquritation</label>
+    <label for="">Date Of Acquisition</label>
     <input type="date" class="form-control" name="dateOfAquritation" @if(isset($inventory)) value="{{$inventory->dateOfAquritation}}" @else value="{{old('dateOfAquritation')}}" @endif>
 </div>
 
