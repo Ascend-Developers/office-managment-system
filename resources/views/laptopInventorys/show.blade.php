@@ -53,10 +53,10 @@
                                 <td class="pr-1">Location :</td>
                                 <td><span class="font-weight-bold">{{$inventory->location}}</span></td>
                             </tr>
-                            <tr>
+                            <!-- <tr>
                                 <td class="pr-1">Condition :</td>
                                 <td><span class="font-weight-bold">{{$inventory->condition}}</span></td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
                 </div>

@@ -12,18 +12,22 @@
                 <table class="table table-hover-animation">
                     <thead>
                         <tr>
+                            <th scope="col">Employ ID</th>
                             <th scope="col">Name</th>
                             <th scope="col">Email</th>
-                            <th scope="col">Phone</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Crruntly Deploy</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($users as $user)
                         <tr>
+                            <td>{{$user->emp_id}}</td>
                             <td>{{$user->name}}</td>
                             <td>{{$user->email}}</td>
-                            <td>{{$user->phone}}</td>
+                            <td>{{$user->status}}</td>
+                            <td>{{$user->cruntDeploy}}</td>
                             <td>
                                 <a href="{{route('user.edit', $user->_id)}}"><i data-feather='edit'></i></a>
                                 <form action="{{route('user.destroy', $user->_id)}}" method="POST" style="display: inline" class="macros-delete" id="delete-macros-'.$user->_id.'">

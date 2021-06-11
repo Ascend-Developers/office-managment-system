@@ -76,7 +76,7 @@
     </div>
 </div>
 
-<div class="col-12">
+<!-- <div class="col-12">
     <div class="form-group row">
         <div class="col-sm-2 col-form-label">
             <label for="fname-icon">Condition</label>
@@ -90,7 +90,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <div class="col-12">
     <div class="form-group row">

@@ -19,25 +19,3 @@
     </div>
 </div>
 @endsection
-
-@push('script')
-<script>
-    $('.select2').select2({
-        placeholder: 'Select an option'
-    });
-    // $("#warranty-date").hide()
-    // $(document).on('change','#warranty-type',function(e){
-    //     $val = $("#warranty-type").val()
-
-    //     if($val === "Under Warranty"){
-    //         $("#warranty-date").show()
-    //     }
-    //     if($val === "Out of warranty"){
-    //         $("#warranty-date").hide()
-    //     }
-    //     if($val === "null"){
-    //         $("#warranty-date").hide()
-    //     }
-    // })
-</script>
-@endpush

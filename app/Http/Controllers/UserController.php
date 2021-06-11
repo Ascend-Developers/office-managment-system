@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Hash;
+use Storage;
+use File;
 
 class UserController extends Controller
 {
@@ -48,10 +50,50 @@ class UserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->input('password')),
-            'phone' => $request->phone
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'status' => $request->status,
+            'cruntDeploy' => $request->cruntDeploy,
         ];
 
         $user = User::create($data);
+
+        $lastUser = User::whereNotNull('emp_id')->orderBy('emp_id', 'dsec')->first();
+        if($lastUser){
+            $lastUserId = $lastUser->emp_id + 1;
+        }else{
+            $lastUserId = 1000;
+        }
+        $user->emp_id = "AHS".$lastUserId;
+        $user->save();
+
+        if($request->file('contractNDA')){
+            $files = $request->file('contractNDA');
+            foreach ($files as $file) {
+                $extension = $file->getClientOriginalExtension();
+                Storage::disk('public')->put($file->getFilename().'.'.$extension,  File::get($file));
+                $user->push('contractNDA', $file->getFilename().'.'.$extension);
+                $user->save();
+            }
+        }
+        if($request->file('contractConsultancy')){
+            $files = $request->file('contractConsultancy');
+            foreach ($files as $file) {
+                $extension = $file->getClientOriginalExtension();
+                Storage::disk('public')->put($file->getFilename().'.'.$extension,  File::get($file));
+                $user->push('contractConsultancy', $file->getFilename().'.'.$extension);
+                $user->save();
+            }
+        }
+        if($request->file('contractIDProves')){
+            $files = $request->file('contractIDProves');
+            foreach ($files as $file) {
+                $extension = $file->getClientOriginalExtension();
+                Storage::disk('public')->put($file->getFilename().'.'.$extension,  File::get($file));
+                $user->push('contractIDProves', $file->getFilename().'.'.$extension);
+                $user->save();
+            }
+        }
 
         return redirect()->route('user.index')->with('success','Employ is created successfully');
     }
@@ -98,8 +140,39 @@ class UserController extends Controller
         $user->email = $request->input('email');
         $user->phone = $request->input('phone');
         $user->password = Hash::make($request->input('password'));
+        $user->address = $request->input('address');
+        $user->status = $request->input('status');
+        $user->cruntDeploy = $request->input('cruntDeploy');
 
         $user->save();
+
+        if($request->file('contractNDA')){
+            $files = $request->file('contractNDA');
+            foreach ($files as $file) {
+                $extension = $file->getClientOriginalExtension();
+                Storage::disk('public')->put($file->getFilename().'.'.$extension,  File::get($file));
+                $user->push('contractNDA', $file->getFilename().'.'.$extension);
+                $user->save();
+            }
+        }
+        if($request->file('contractConsultancy')){
+            $files = $request->file('contractConsultancy');
+            foreach ($files as $file) {
+                $extension = $file->getClientOriginalExtension();
+                Storage::disk('public')->put($file->getFilename().'.'.$extension,  File::get($file));
+                $user->push('contractConsultancy', $file->getFilename().'.'.$extension);
+                $user->save();
+            }
+        }
+        if($request->file('contractIDProves')){
+            $files = $request->file('contractIDProves');
+            foreach ($files as $file) {
+                $extension = $file->getClientOriginalExtension();
+                Storage::disk('public')->put($file->getFilename().'.'.$extension,  File::get($file));
+                $user->push('contractIDProves', $file->getFilename().'.'.$extension);
+                $user->save();
+            }
+        }
         
         return redirect()->route('user.index')->with('success','User is Updated successfully');
     }

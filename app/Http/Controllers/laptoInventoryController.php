@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\laptopInventory;
 use Illuminate\Http\Request;
 use App\User;
+use Storage;
+use File;
 
 class laptoInventoryController extends Controller
 {
@@ -64,7 +66,7 @@ class laptoInventoryController extends Controller
             'productName' => $request->input('productName'),
             'dateOfAquritation' => $request->input('dateOfAquritation'),
             'location' => $request->input('location'),
-            'condition' => $request->input('condition'),
+            // 'condition' => $request->input('condition'),
             'user_id' => $request->input('user_id'),
         ];
         $inventory = laptopInventory::create($data);
@@ -140,7 +142,7 @@ class laptoInventoryController extends Controller
         $inventory->productName = $request->input('productName');
         $inventory->dateOfAquritation = $request->input('dateOfAquritation');
         $inventory->location = $request->input('location');
-        $inventory->condition = $request->input('condition');
+        // $inventory->condition = $request->input('condition');
         $inventory->user_id = $request->input('user_id');
 
         $inventory->save();

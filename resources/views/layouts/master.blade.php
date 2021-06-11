@@ -88,12 +88,14 @@
     <!-- BEGIN Vendor JS-->
 
     <!-- BEGIN: Page Vendor JS-->
-    <!-- <script src="/app-assets/vendors/js/charts/apexcharts.min.js"></script> -->
+    <script src="/app-assets/vendors/js/charts/apexcharts.min.js"></script>
     <script src="/app-assets/vendors/js/forms/select/select2.full.min.js"></script>
     <!-- <script src="/app-assets/vendors/js/extensions/toastr.min.js"></script> -->
     <script src="/app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
     <script src="/app-assets/vendors/js/extensions/sweetalert2.all.min.js"></script>
     <!-- <script src="/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js?v=7.0.5"></script> -->
+    <script src="/app-assets/js/scripts/pages/dashboard-analytics.js"></script>
+    
     <!-- END: Page Vendor JS-->
 
     <!-- BEGIN: Theme JS-->
@@ -102,13 +104,13 @@
     <!-- END: Theme JS-->
 
     <!-- BEGIN: Page JS-->
-    <!-- <script src="/app-assets/js/scripts/pages/dashboard-ecommerce.js"></script> -->
+    <script src="/app-assets/js/scripts/pages/dashboard-ecommerce.js"></script>
     <!-- END: Page JS-->
 
     <script src="/app-assets/js/scripts/extensions/ext-component-sweet-alerts.js"></script>
 
     <!-- BEGIN: Page JS-->
-    <!-- <script src="/app-assets/js/scripts/cards/card-statistics.js"></script> -->
+    <script src="/a pp-assets/js/scripts/cards/card-statistics.js"></script>
     <!-- END: Page JS-->
 
     @stack('script')
