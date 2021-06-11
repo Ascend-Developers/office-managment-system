@@ -62,14 +62,8 @@ class laptoInventoryController extends Controller
         //     'user_id' => ['required'],
         // ]);
         $data = [
-            'name' => $request->input('name'),
-            'model' => $request->input('model'),
             'serialNo' => $request->input('serialNo'),
-            'description' => $request->input('description'),
             'productName' => $request->input('productName'),
-            'units' => $request->input('units'),
-            'quantity' => $request->input('quantity'),
-            'cost' => $request->input('cost'),
             'dateOfAquritation' => $request->input('dateOfAquritation'),
             'location' => $request->input('location'),
             'condition' => $request->input('condition'),
@@ -144,14 +138,8 @@ class laptoInventoryController extends Controller
 
         $inventory = laptopInventory::find($id);
 
-        $inventory->name = $request->input('name');
-        $inventory->model = $request->input('model');
         $inventory->serialNo = $request->input('serialNo');
-        $inventory->description = $request->input('description');
         $inventory->productName = $request->input('productName');
-        $inventory->units = $request->input('units');
-        $inventory->quantity = $request->input('quantity');
-        $inventory->cost = $request->input('cost');
         $inventory->dateOfAquritation = $request->input('dateOfAquritation');
         $inventory->location = $request->input('location');
         $inventory->condition = $request->input('condition');

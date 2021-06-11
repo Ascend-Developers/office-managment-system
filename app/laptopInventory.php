@@ -11,7 +11,6 @@ class laptopInventory extends Model
     use SoftDeletes;
     protected $fillable = [
         'serialNo',
-        'description',
         'productName',
         'dateOfAquritation',
         'location',

@@ -14,11 +14,6 @@
 </div>
 
 <div class="form-group">
-    <label for="">Description</label>
-    <textarea class="form-control" name="description" rows="3" >{{old('description')}} @if(isset($inventory)) {{$inventory->description}} @endif</textarea>
-</div>
-
-<div class="form-group">
     <label for="">Product Name</label>
     <input type="text" class="form-control" name="productName"  @if(isset($inventory)) value="{{$inventory->productName}}" @else value="{{old('productName')}}" @endif>
 </div>
@@ -30,7 +25,12 @@
 
 <div class="form-group">
     <label for="">Location</label>
-    <input type="text" class="form-control" name="location"  @if(isset($inventory)) value="{{$inventory->location}}" @else value="{{old('location')}}" @endif>
+    <select name="location" class="form-control form-control-lg select2"  id="exampleSelectl2">
+        <option value="{{null}}" selected="selected">Select Options</option>
+            <option value="Lahore" @if(isset($inventory)) value="{{$inventory->location}}" selected="selected" @endif>Lahore</option>
+            <option value="Islamabad" @if(isset($inventory)) value="{{$inventory->location}}" selected="selected" @endif>Islamabad</option>
+
+    </select>
 </div>
 
 <div class="form-group">
