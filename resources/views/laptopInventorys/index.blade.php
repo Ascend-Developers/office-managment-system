@@ -1,35 +1,53 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container-fluid">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">{{ __('Laptop Inventory') }}</div>
-
-                <div class="card-body table-responsive w-100">
-                    <table class="table responsive " id="invt-table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Product Name</th>
-                                <th scope="col">Serial No</th>
-                                <th scope="col">Location</th>
-                                <th scope="col">User</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
+<!-- Table Hover Animation start -->
+<div class="row" id="table-hover-animation">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">{{ __('Laptop Inventory') }}</h4>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover-animation">
+                    <thead>
+                        <tr>
+                            <th scope="col">Product Name</th>
+                            <th scope="col">Serial No</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">User</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($inventorys as $inventory)
+                        <tr>
+                            <td>{{$inventory->productName}}</td>
+                            <td>{{$inventory->serialNo}}</td>
+                            <td>{{$inventory->location}}</td>
+                            <td>{{$inventory->getUser ? $inventory->getUser->name : "--" }}</td>
+                            <td>
+                                <a href="{{route('laptopInventory.edit', $inventory->_id)}}"><i data-feather='edit'></i></a>
+                                <form action="{{route('laptopInventory.destroy', $inventory->_id)}}" method="POST" style="display: inline" class="macros-delete" id="delete-macros-'.$user->_id.'">
+                                    <input type="hidden" name="_method" value="delete">
+                                    <input type="hidden" name="_token" value="'.csrf_token().'">
+                                    <button style="color: red;" class="btn selectDelBtn" type="submit"><i data-feather='delete'></i></button>
+                                </form>
+                                <a style="color: green;" href="{{route('laptopInventory.show', $inventory->_id)}}"><i data-feather='eye'></i></a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 </div>
+<!-- Table head options end -->
 @endsection
 
 @push('script')
-<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-<script src="//cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
 
     <script>
         $(document).ready(function(){
@@ -64,22 +82,6 @@
                     }
                     });
             });
-            });
-
-            $(function() {
-                $('#invt-table').DataTable({
-                    processing: true,
-                    serverSide: true,
-                    responsive: true,
-                    ajax: '{!! route('inventory.datatable') !!}',
-                    columns: [
-                        { data: 'productName', name: 'Product Name' },
-                        { data: 'serialNo', name: 'Serial No' },
-                        { data: 'location', name: 'Location' },
-                        { data: 'user', name: 'User' },
-                        { data: 'action', name: 'Action' },
-                    ]
-                });
             });
     </script>
 @endpush

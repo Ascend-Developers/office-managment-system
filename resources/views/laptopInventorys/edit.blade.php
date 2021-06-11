@@ -5,8 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Edit Laptop Inventory') }}</div>
-
+                <div class="card-header">
+                    <h4 class="card-title">{{ __('Edit Laptop Inventory') }}</h4>
+                </div>
                 <div class="card-body">
                     <form action="{{route('laptopInventory.update', $inventory->id)}}" method="POST">
                         @method('PATCH')

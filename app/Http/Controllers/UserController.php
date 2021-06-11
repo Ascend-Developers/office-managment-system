@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Hash;
-use DataTables;
 
 class UserController extends Controller
 {
@@ -21,9 +20,8 @@ class UserController extends Controller
     public function index()
     {
         //
-        // $users = User::all();
-        // return view('users.index', compact('users'));
-        return view('users.index');
+        $users = User::all();
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -98,7 +96,7 @@ class UserController extends Controller
 
         $user->name = $request->input('name');
         $user->email = $request->input('email');
-        $user->phone = $request->input('password');
+        $user->phone = $request->input('phone');
         $user->password = Hash::make($request->input('password'));
 
         $user->save();
@@ -118,40 +116,5 @@ class UserController extends Controller
         $user = User::find($id);
         $user->delete();
         return redirect()->route('user.index');
-    }
-
-    public function getFilterData($request){
-        $user = User::query();
-        return $user;
-    }
-
-    public function DataTables(Request $request){
-        $users = $this->getFilterData($request)->get();
-
-        return DataTables::of($users)
-        ->addColumn('name', function($u) {
-            return $u->name;
-        })
-        ->addColumn('email', function($u) {
-            return $u->email;
-        })
-        ->addColumn('phone', function($u) {
-            return $u->phone;
-        })
-        ->addColumn('action', function ($u) {
-                $route = route('user.edit', $u);
-                $routeShow = route('user.show', $u);
-                return '<a href="'.$route.'" class="text-primary">Update</a> |
-                <form action=" '.route("user.destroy", $u->id).' " method="POST" style="display: inline" class="macros-delete" id="delete-macros-'.$u->_id.'">
-                <input type="hidden" name="_method" value="delete">
-                <input type="hidden" name="_token" value="'.csrf_token().'">
-                <button class="text-danger selectDelBtn" type="submit" style="background: none; border:none; display:inline">Delete</button>
-                </form> |
-                <a href="'.$routeShow.'" class="text-primary">show</a>';
-        })
-        ->whitelist(['name','email'])
-        // ->rawColumns([])
-        ->toJson();
-
     }
 }

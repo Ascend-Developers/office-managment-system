@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\laptopInventory;
 use Illuminate\Http\Request;
-use DataTables;
 use App\User;
 
 class laptoInventoryController extends Controller
@@ -21,9 +20,8 @@ class laptoInventoryController extends Controller
     public function index()
     {
         //
-        // $inventorys = Inventory::all();
-        // return view('inventorys.index', compact('inventorys'));
-        return view('laptopInventorys.index');
+        $inventorys = laptopInventory::all();
+        return view('laptopInventorys.index', compact('inventorys'));
     }
 
     /**
@@ -172,46 +170,6 @@ class laptoInventoryController extends Controller
         $inventory = laptopInventory::find($id);
         $inventory->delete();
         return redirect()->route('laptopInventory.index');
-    }
-
-    public function getFilterData($request){
-        $inv = laptopInventory::query();
-
-        return $inv;
-    }
-
-    public function DataTables(Request $request){
-        $inventory = $this->getFilterData($request)->get();
-
-        return DataTables::of($inventory)
-        ->addColumn('productName', function($i) {
-            return $i->productName;
-        })
-        ->addColumn('serialNo', function($i) {
-            return $i->serialNo;
-        })
-        ->addColumn('location', function($i) {
-            return $i->location;
-        })
-        ->addColumn('user', function($i) {
-            return $i->getUser ? $i->getUser->name : "--";
-        })
-        ->addColumn('action', function ($i) {
-                $route = route('laptopInventory.edit', $i);
-                $routeShow = route('laptopInventory.show', $i);
-                return '<a href="'.$route.'" class="text-primary">Update</a> |
-                <form action=" '.route("laptopInventory.destroy", $i->id).' " method="POST" style="display: inline" class="macros-delete" id="delete-macros-'.$i->_id.'">
-                <input type="hidden" name="_method" value="delete">
-                <input type="hidden" name="_token" value="'.csrf_token().'">
-                <button class="text-danger selectDelBtn" type="submit" style="background: none; border:none; display:inline">Delete</button>
-                </form> |
-                <a href="'.$routeShow.'" class="text-primary">show</a>';
-        })
-
-        ->whitelist(['name', 'productName', 'model', 'units', 'user'])
-        // ->rawColumns([])
-        ->toJson();
-
     }
 
 }

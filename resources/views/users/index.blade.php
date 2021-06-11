@@ -1,34 +1,51 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container-fluid">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">{{ __('Users') }}</div>
-
-                <div class="card-body table-responsive w-100">
-                    <table class="table responsive " id="user-table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Name</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Phone</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
+<!-- Table Hover Animation start -->
+<div class="row" id="table-hover-animation">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">{{ __('Users') }}</h4>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover-animation">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($users as $user)
+                        <tr>
+                            <td>{{$user->name}}</td>
+                            <td>{{$user->email}}</td>
+                            <td>{{$user->phone}}</td>
+                            <td>
+                                <a href="{{route('user.edit', $user->_id)}}"><i data-feather='edit'></i></a>
+                                <form action="{{route('user.destroy', $user->_id)}}" method="POST" style="display: inline" class="macros-delete" id="delete-macros-'.$user->_id.'">
+                                    <input type="hidden" name="_method" value="delete">
+                                    <input type="hidden" name="_token" value="'.csrf_token().'">
+                                    <button style="color: red;" class="btn selectDelBtn" type="submit"><i data-feather='delete'></i></button>
+                                </form>
+                                <a style="color: green;" href="{{route('user.show', $user->_id)}}"><i data-feather='eye'></i></a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 </div>
+<!-- Table head options end -->
 @endsection
 
 @push('script')
-<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-<script src="//cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
 
     <script>
         $(document).ready(function(){
@@ -63,21 +80,6 @@
                     }
                     });
             });
-            });
-
-            $(function() {
-                $('#user-table').DataTable({
-                    processing: true,
-                    serverSide: true,
-                    responsive: true,
-                    ajax: '{!! route('user.datatable') !!}',
-                    columns: [
-                        { data: 'name', name: 'Name' },
-                        { data: 'email', name: 'Email' },
-                        { data: 'phone', name: 'Phone' },
-                        { data: 'action', name: 'Action' },
-                    ]
-                });
             });
     </script>
 @endpush
