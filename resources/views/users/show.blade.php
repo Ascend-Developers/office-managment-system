@@ -21,7 +21,7 @@
                                             </div>
                                             <div class="d-flex flex-wrap">
                                                 <a href="{{route('user.edit', $user->_id)}}" class="btn btn-primary">Edit</a>
-                                                <form action="{{route('user.destroy', $user->_id)}}" method="POST" style="display: inline" class="macros-delete" id="delete-macros-{{$u->_id}}">
+                                                <form action="{{route('user.destroy', $user->_id)}}" method="POST" style="display: inline" class="macros-delete" id="delete-macros-{{$user->_id}}">
                                                     @csrf
                                                     @method('delete')
                                                     <button class="btn btn-outline-danger ml-1 selectDelBtn" type="submit">Delete</button>
