@@ -171,7 +171,7 @@ class laptoInventoryController extends Controller
         //
         $inventory = laptopInventory::find($id);
         $inventory->delete();
-        return redirect()->route('laptopInventory.index');
+        return redirect('laptopInventory');
     }
 
 }

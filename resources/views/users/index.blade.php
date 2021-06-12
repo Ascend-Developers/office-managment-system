@@ -30,9 +30,9 @@
                             <td>{{$user->cruntDeploy}}</td>
                             <td>
                                 <a href="{{route('user.edit', $user->_id)}}"><i data-feather='edit'></i></a>
-                                <form action="{{route('user.destroy', $user->_id)}}" method="POST" style="display: inline" class="macros-delete" id="delete-macros-'.$user->_id.'">
-                                    <input type="hidden" name="_method" value="delete">
-                                    <input type="hidden" name="_token" value="'.csrf_token().'">
+                                <form action="{{route('user.destroy', $user->_id)}}" method="POST" style="display: inline" class="macros-delete" id="delete-macros-{{$user->_id}}">
+                                    @csrf
+                                    @method('delete')
                                     <button style="color: red;" class="btn selectDelBtn" type="submit"><i data-feather='delete'></i></button>
                                 </form>
                                 <a style="color: green;" href="{{route('user.show', $user->_id)}}"><i data-feather='eye'></i></a>
