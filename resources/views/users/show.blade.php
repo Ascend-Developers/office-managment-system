@@ -21,10 +21,9 @@
                                             </div>
                                             <div class="d-flex flex-wrap">
                                                 <a href="{{route('user.edit', $user->_id)}}" class="btn btn-primary">Edit</a>
-                                                <!-- <button class="btn btn-outline-danger ml-1">Delete</button> -->
-                                                <form action="{{route('user.destroy', $user->_id)}}" method="POST" style="display: inline" class="macros-delete" id="delete-macros-'.$u->_id.'">
-                                                    <input type="hidden" name="_method" value="delete">
-                                                    <input type="hidden" name="_token" value="'.csrf_token().'">
+                                                <form action="{{route('user.destroy', $user->_id)}}" method="POST" style="display: inline" class="macros-delete" id="delete-macros-{{$u->_id}}">
+                                                    @csrf
+                                                    @method('delete')
                                                     <button class="btn btn-outline-danger ml-1 selectDelBtn" type="submit">Delete</button>
                                                 </form>
                                             </div>
