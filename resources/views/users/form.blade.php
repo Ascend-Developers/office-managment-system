@@ -134,7 +134,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i data-feather="FilePlusIcon"></i></span>
                 </div>
-                <input type="file" name="contractNDA[]" multiple class="custom-file-input" id="customFile" />
+                <input type="file" name="contractNDA[]" multiple class="custom-file-input" id="customFile1" />
                 <label class="custom-file-label" for="customFile">File Upload</label>
             </div>
         </div>
@@ -151,7 +151,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i data-feather="FilePlusIcon"></i></span>
                 </div>
-                <input type="file" name="contractConsultancy[]" multiple class="custom-file-input" id="customFile" />
+                <input type="file" name="contractConsultancy[]" multiple class="custom-file-input" id="customFile2" />
                 <label class="custom-file-label" for="customFile">File Upload</label>
             </div>
         </div>
@@ -168,7 +168,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i data-feather="FilePlusIcon"></i></span>
                 </div>
-                <input type="file" name="contractIDProves[]" multiple class="custom-file-input" id="customFile" />
+                <input type="file" name="contractIDProves[]" multiple class="custom-file-input" id="customFile3" />
                 <label class="custom-file-label" for="customFile">File Upload</label>
             </div>
         </div>

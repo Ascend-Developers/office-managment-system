@@ -64,7 +64,7 @@ class UserController extends Controller
         }else{
             $lastUserId = 1000;
         }
-        $user->emp_id = "AHS".$lastUserId;
+        $user->emp_id = $lastUserId;
         $user->save();
 
         if($request->file('contractNDA')){

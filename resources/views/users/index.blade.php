@@ -23,7 +23,7 @@
                     <tbody>
                         @foreach($users as $user)
                         <tr>
-                            <td>{{$user->emp_id}}</td>
+                            <td>AHS{{$user->emp_id}}</td>
                             <td>{{$user->name}}</td>
                             <td>{{$user->email}}</td>
                             <td>{{$user->status}}</td>
