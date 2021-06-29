@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\laptopInventory;
+use App\Inventory;
 use Illuminate\Http\Request;
 use App\User;
 use Storage;
 use File;
 
-class laptoInventoryController extends Controller
+class InventoryController extends Controller
 {
     public function __construct()
     {
@@ -22,8 +22,8 @@ class laptoInventoryController extends Controller
     public function index()
     {
         //
-        $inventorys = laptopInventory::all();
-        return view('laptopInventorys.index', compact('inventorys'));
+        $inventorys = Inventory::all();
+        return view('Inventorys.index', compact('inventorys'));
     }
 
     /**
@@ -35,7 +35,7 @@ class laptoInventoryController extends Controller
     {
         //
         $users = User::all();
-        return view('laptopInventorys.create', compact('users'));
+        return view('Inventorys.create', compact('users'));
     }
 
     /**
@@ -48,28 +48,19 @@ class laptoInventoryController extends Controller
     {
         //
         // $this->validate($request, [
-        //     'name' => ['required'],
-        //     'model'=> ['required'],
-        //     'serialNo' => ['required'],
-        //     'description' => ['required'],
-        //     'productName' => ['required'],
-        //     'units' => ['required'],
-        //     'quantity' => ['required'],
-        //     'cost' => ['required'],
-        //     'dateOfAquritation' => ['required'],
         //     'location' => ['required'],
-        //     'condition' => ['required'],
-        //     'user_id' => ['required'],
+        //     'user_id' => ['required']
         // ]);
         $data = [
             'serialNo' => $request->input('serialNo'),
             'productName' => $request->input('productName'),
             'dateOfAquritation' => $request->input('dateOfAquritation'),
+            'assiningDate' => $request->input('assiningDate'),
             'location' => $request->input('location'),
-            // 'condition' => $request->input('condition'),
+            'type' => $request->input('type'),
             'user_id' => $request->input('user_id'),
         ];
-        $inventory = laptopInventory::create($data);
+        $inventory = Inventory::create($data);
 
         if($request->file('fileUpload')){
             $files = $request->file('fileUpload');
@@ -81,7 +72,7 @@ class laptoInventoryController extends Controller
             }
         }
 
-        return redirect()->route('laptopInventory.index')->with('success','Inventory is created successfully');
+        return redirect()->route('inventory.index')->with('success','Inventory is created successfully');
     }
 
     /**
@@ -93,8 +84,8 @@ class laptoInventoryController extends Controller
     public function show($id)
     {
         //
-        $inventory = laptopInventory::find($id);
-        return view('laptopInventorys.show', compact('inventory'));
+        $inventory = Inventory::find($id);
+        return view('Inventorys.show', compact('inventory'));
     }
 
     /**
@@ -107,8 +98,8 @@ class laptoInventoryController extends Controller
     {
         //
         $users = User::all();
-        $inventory = laptopInventory::find($id);
-        return view('laptopInventorys.edit', compact('inventory','users'));
+        $inventory = Inventory::find($id);
+        return view('Inventorys.edit', compact('inventory','users'));
     }
 
     /**
@@ -122,27 +113,18 @@ class laptoInventoryController extends Controller
     {
         //
         // $this->validate($request, [
-        //     'name' => ['required'],
-        //     'model'=> ['required'],
-        //     'serialNo' => ['required'],
-        //     'description' => ['required'],
-        //     'productName' => ['required'],
-        //     'units' => ['required'],
-        //     'quantity' => ['required'],
-        //     'cost' => ['required'],
-        //     'dateOfAquritation' => ['required'],
         //     'location' => ['required'],
-        //     'condition' => ['required'],
-        //     'user_id' => ['required'],
+        //     'user_id' => ['required']
         // ]);
 
-        $inventory = laptopInventory::find($id);
+        $inventory = Inventory::find($id);
 
         $inventory->serialNo = $request->input('serialNo');
         $inventory->productName = $request->input('productName');
         $inventory->dateOfAquritation = $request->input('dateOfAquritation');
+        $inventory->assiningDate = $request->input('assiningDate');
         $inventory->location = $request->input('location');
-        // $inventory->condition = $request->input('condition');
+        $inventory->type = $request->input('type');
         $inventory->user_id = $request->input('user_id');
 
         $inventory->save();
@@ -157,7 +139,7 @@ class laptoInventoryController extends Controller
             }
         }
 
-        return redirect()->route('laptopInventory.index')->with('success','Inventory is Updated successfully');
+        return redirect()->route('inventory.index')->with('success','Inventory is Updated successfully');
     }
 
     /**
@@ -169,9 +151,9 @@ class laptoInventoryController extends Controller
     public function destroy($id)
     {
         //
-        $inventory = laptopInventory::find($id);
+        $inventory = Inventory::find($id);
         $inventory->delete();
-        return redirect('laptopInventory');
+        return redirect('inventory');
     }
 
 }

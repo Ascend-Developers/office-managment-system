@@ -6,12 +6,12 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">{{ __('Add Laptop Inventory') }}</h4>
+                    <h4 class="card-title">{{ __('Add Inventory') }}</h4>
                 </div>
                 <div class="card-body">
-                    <form action="{{route('laptopInventory.store')}}" method="POST">
+                    <form action="{{route('inventory.store')}}" method="POST">
                         @csrf
-                            @include('laptopInventorys.form')
+                            @include('Inventorys.form')
                     </form>
                 </div>
             </div>

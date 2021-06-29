@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\User;
-use App\laptopInventory;
+use App\Inventory;
 
 class HomeController extends Controller
 {
@@ -27,7 +27,7 @@ class HomeController extends Controller
     public function index()
     {
         $u = count(User::all());
-        $i = count(laptopInventory::all());
+        $i = count(Inventory::all());
         return view('home', compact('u','i'));
     }
 }

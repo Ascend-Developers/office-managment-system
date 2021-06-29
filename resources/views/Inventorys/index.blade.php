@@ -6,7 +6,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">{{ __('Laptop Inventory') }}</h4>
+                <h4 class="card-title">{{ __('Inventory') }}</h4>
             </div>
             <div class="table-responsive">
                 <table class="table table-hover-animation">
@@ -27,13 +27,13 @@
                             <td>{{$inventory->location}}</td>
                             <td>{{$inventory->getUser ? $inventory->getUser->name : "--" }}</td>
                             <td>
-                                <a href="{{route('laptopInventory.edit', $inventory->_id)}}"><i data-feather='edit'></i></a>
-                                <form action="{{route('laptopInventory.destroy', $inventory->_id)}}" method="POST" style="display: inline" class="macros-delete" id="delete-macros-{{$inventory->_id}}">
+                                <a href="{{route('inventory.edit', $inventory->_id)}}"><i data-feather='edit'></i></a>
+                                <form action="{{route('inventory.destroy', $inventory->_id)}}" method="POST" style="display: inline" class="macros-delete" id="delete-macros-{{$inventory->_id}}">
                                     @csrf
                                     @method('delete')
                                     <button style="color: red;" class="btn selectDelBtn" type="submit"><i data-feather='delete'></i></button>
                                 </form>
-                                <a style="color: green;" href="{{route('laptopInventory.show', $inventory->_id)}}"><i data-feather='eye'></i></a>
+                                <a style="color: green;" href="{{route('inventory.show', $inventory->_id)}}"><i data-feather='eye'></i></a>
                             </td>
                         </tr>
                         @endforeach

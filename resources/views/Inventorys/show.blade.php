@@ -53,10 +53,10 @@
                                 <td class="pr-1">Location :</td>
                                 <td><span class="font-weight-bold">{{$inventory->location}}</span></td>
                             </tr>
-                            <!-- <tr>
-                                <td class="pr-1">Condition :</td>
-                                <td><span class="font-weight-bold">{{$inventory->condition}}</span></td>
-                            </tr> -->
+                            <tr>
+                                <td class="pr-1">Date of Assining :</td>
+                                <td><span class="font-weight-bold">{{$inventory->assiningDate}}</span></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

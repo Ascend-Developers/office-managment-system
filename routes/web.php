@@ -23,5 +23,5 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::resource('user','UserController');
 Route::get('userTable','UserController@DataTables')->name('user.datatable');
-Route::resource('laptopInventory','laptoInventoryController');
-Route::get('laptopInventoryTable','laptoInventoryController@DataTables')->name('inventory.datatable');
+Route::resource('inventory','InventoryController');
+Route::get('inventoryTable','InventoryController@DataTables')->name('inventory.datatable');

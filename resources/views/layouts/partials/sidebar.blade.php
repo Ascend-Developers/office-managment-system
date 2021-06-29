@@ -27,13 +27,9 @@
             {{-- Inventory --}}
             <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="codesandbox"></i><span class="menu-title text-truncate" data-i18n="Inventory">Inventory</span></a>
                 <ul class="menu-content">
-                    <li><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Laptop Inventory">Laptop Inventory</span></a>
-                        <ul class="menu-content">
-                            <li><a class="d-flex align-items-center" href="{{route('laptopInventory.create')}}" target="_blank"><span class="menu-item text-truncate" data-i18n="Add">Add</span></a>
-                            </li>
-                            <li><a class="d-flex align-items-center" href="{{route('laptopInventory.index')}}" target="_blank"><span class="menu-item text-truncate" data-i18n="List">List</span></a>
-                            </li>
-                        </ui>
+                    <li><a class="d-flex align-items-center" href="{{route('inventory.create')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="Add">Add</span></a>
+                    </li>
+                    <li><a class="d-flex align-items-center" href="{{route('inventory.index')}}"><i data-feather="circle"></i><span class="menu-item" data-i18n="List">List</span></a>
                     </li>
                 </ul>
             </li>

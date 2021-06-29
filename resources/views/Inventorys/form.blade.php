@@ -76,22 +76,6 @@
     </div>
 </div>
 
-<!-- <div class="col-12">
-    <div class="form-group row">
-        <div class="col-sm-2 col-form-label">
-            <label for="fname-icon">Condition</label>
-        </div>
-        <div class="col-sm-10">
-            <div class="input-group input-group-merge">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i data-feather='alert-octagon'></i></span>
-                </div>
-                <input type="text" class="form-control" name="condition"  @if(isset($inventory)) value="{{$inventory->condition}}" @else value="{{old('condition')}}" @endif />
-            </div>
-        </div>
-    </div>
-</div> -->
-
 <div class="col-12">
     <div class="form-group row">
         <div class="col-sm-2 col-form-label">
@@ -116,6 +100,22 @@
 <div class="col-12">
     <div class="form-group row">
         <div class="col-sm-2 col-form-label">
+            <label for="fname-icon">Date of Assining</label>
+        </div>
+        <div class="col-sm-10">
+            <div class="input-group input-group-merge">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i data-feather='calendar'></i></span>
+                </div>
+                <input type="date" class="form-control" name="assiningDate" @if(isset($inventory)) value="{{$inventory->assiningDate}}" @else value="{{old('assiningDate')}}" @endif />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-12">
+    <div class="form-group row">
+        <div class="col-sm-2 col-form-label">
             <label for="fname-icon">File Upload</label>
         </div>
         <div class="col-sm-10">
@@ -125,6 +125,25 @@
                 </div>
                 <input type="file" name="fileUpload[]" multiple class="custom-file-input" id="customFile" />
                 <label class="custom-file-label" for="customFile">File Upload</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-12">
+    <div class="form-group row">
+        <div class="col-sm-2 col-form-label">
+            <label for="fname-icon">Type</label>
+        </div>
+        <div class="col-sm-10">
+            <div class="input-group input-group-merge">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i data-feather='git-commit-icon'></i></span>
+                </div>
+                <select name="type" class="form-control form-control-lg select2"  id="exampleSelectl2">
+                    <option value="{{null}}" selected="selected">Select Options</option>
+                    <option value="Laptop" @if(isset($inventory)) value="{{$inventory->type}}" selected="selected" @endif>Laptop</option>
+                </select>
             </div>
         </div>
     </div>
