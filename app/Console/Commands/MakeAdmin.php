@@ -40,8 +40,8 @@ class MakeAdmin extends Command
     public function handle()
     {
         $data = [
-            'name' => 'Hassan Aamir',
-            'email' => 'hassan.aamir@ascend.com.sa',
+            'name' => 'Admin',
+            'email' => 'admin@ascend.com.sa',
             'password' => Hash::make('oms@2040'),
         ];
 
